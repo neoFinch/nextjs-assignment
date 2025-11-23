@@ -10,7 +10,6 @@ describe("Home Page (integration test)", () => {
 
   it("should fetch pokemon list and display it correctly", async () => {
     const mockResponse = {
-
       results: [
         {
           url: 'https://pokeapi.co/api/v2/pokemon/1/',
@@ -22,6 +21,7 @@ describe("Home Page (integration test)", () => {
         }
       ]
     };
+
     (global.fetch as jest.Mock)
       .mockResolvedValue(
         {

@@ -6,7 +6,7 @@ export default async function Home() {
 
   return (
     <div className="p-8">
-      <main className="flex flex-row flex-wrap justify-start gap-8">
+      <main className="flex flex-row flex-wrap justify-center gap-8">
         {pokemons.map((pokemon: Pokemon) => (
           <PokemonCard
             id={pokemon.id}
