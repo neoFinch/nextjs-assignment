@@ -8,9 +8,12 @@ A Next.js 15 application that displays Pokemon data by fetching from the PokeAPI
 
 pnpm install
 
-### 2. Set up environment variables
+### 2. Set up environment variables (optional)
 
-Create a `.env.local` file by copying from `.env.example`:
+Create a `.env.local` file by copying `.env.example`.
+
+> This step is optional.  
+> The application includes safe fallbacks, so it will run even if no environment variables are defined.
 
 
 ### 3. Run the development server
