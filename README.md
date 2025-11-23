@@ -4,9 +4,13 @@ A Next.js 15 application that displays Pokemon data by fetching from the PokeAPI
 
 ## Getting Started
 
+> This project uses **pnpm** (recommended), but it works with **npm** or **yarn** as well.
+
 ### 1. Install dependencies
 
-pnpm install
+> pnpm install
+or
+> npm install
 
 ### 2. Set up environment variables (optional)
 
