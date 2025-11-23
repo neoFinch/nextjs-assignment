@@ -5,21 +5,34 @@ export interface Pokemon {
 }
 
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<Pokemon[]> {
-  const apiUrl = process.env.POKEMON_API || 'https://pokeapi.co/api/v2/pokemon';
-  const data = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`);
-  const pokemonList = await data.json();
-  
-  const pokemons = pokemonList.results.map((pokemon: any) => {
-    let pokeId = pokemon.url.split("/");
-    pokeId = pokeId[pokeId.length - 2];
+  try {
+    const apiUrl = process.env.POKEMON_API || 'https://pokeapi.co/api/v2/pokemon';
+    const response = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`);
     
-    return {
-      id: pokeId,
-      name: pokemon.name,
-      image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeId}.png`,
-    };
-  });
+    if (!response.ok) {
+      throw new Error(`Failed to fetch Pokemon list: ${response.status} ${response.statusText}`);
+    }
+    
+    const pokemonList = await response.json();
+    
+    if (!pokemonList.results || !Array.isArray(pokemonList.results)) {
+      throw new Error('Invalid response format from Pokemon API');
+    }
+    
+    const pokemons = pokemonList.results.map((pokemon: any) => {
+      let pokeId = pokemon.url.split("/");
+      pokeId = pokeId[pokeId.length - 2];
+      
+      return {
+        id: pokeId,
+        name: pokemon.name,
+        image: `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokeId}.png`,
+      };
+    });
 
-  return pokemons;
+    return pokemons;
+  } catch (error) {
+    throw new Error('Error fetching Pokemon list');
+  }
 }
 

@@ -7,23 +7,26 @@ export interface PokemonDetail {
       };
     };
   };
-  types: Array<{
-    type: {
-      name: string;
-    };
-  }>;
-  stats: Array<{
-    stat: {
-      name: string;
-    };
-    base_stat: number;
-  }>;
+  types: Array<any>;
+  stats: Array<any>;
 }
 
 export async function getPokemonDetail(slug: string): Promise<PokemonDetail> {
-  const apiUrl = process.env.POKEMON_API || 'https://pokeapi.co/api/v2/pokemon';
-  const data = await fetch(`${apiUrl}/${slug.toLowerCase()}`);
-  const pokemonDetails = await data.json();
-  return pokemonDetails;
+  try {
+    const apiUrl = process.env.POKEMON_API || 'https://pokeapi.co/api/v2/pokemon';
+    const response = await fetch(`${apiUrl}/${slug.toLowerCase()}`);
+    
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error(`Pokemon "${slug}" not found`);
+      }
+      throw new Error(`Failed to fetch Pokemon details: ${response.status} ${response.statusText}`);
+    }
+    
+    const pokemonDetails = await response.json();
+    return pokemonDetails;
+  } catch (error) {
+    throw new Error(`Error fetching Pokemon details for "${slug}"`);
+  }
 }
 
