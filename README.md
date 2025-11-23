@@ -19,7 +19,8 @@ pnpm dev
 
 ## Testing
 
-pnpm test
+pnpm test 
+
 pnpm test:coverage
 
 ## Tech Stack
