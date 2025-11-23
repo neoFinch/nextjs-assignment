@@ -20,7 +20,9 @@ pnpm dev
 ## Testing
 
 pnpm test
-pnpm test:coverage## Tech Stack
+pnpm test:coverage
+
+## Tech Stack
 
 - Next.js 15.5.6
 - React 19
