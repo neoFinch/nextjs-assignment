@@ -15,7 +15,7 @@ Create a `.env.local` file by copying from `.env.example`:
 
 ### 3. Run the development server
 
-pnpm devOpen [http://localhost:3000](http://localhost:3000) in your browser.
+pnpm dev
 
 ## Testing
 
