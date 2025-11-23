@@ -8,8 +8,9 @@ export default async function PokemonPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  console.time('detail fetch')
   const pokemonDetails = await getPokemonDetail(slug);
-
+  console.timeEnd('detail fetch')
 
   return (
     <div className="flex flex-row flex-wrap items-center justify-center p-8 gap-8">

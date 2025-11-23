@@ -7,7 +7,11 @@ export interface Pokemon {
 export async function getPokemonList(limit: number = 20, offset: number = 0): Promise<Pokemon[]> {
   try {
     const apiUrl = process.env.POKEMON_API || 'https://pokeapi.co/api/v2/pokemon';
-    const response = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`);
+    const response = await fetch(`${apiUrl}?limit=${limit}&offset=${offset}`, {
+      next: {
+        revalidate: 60 * 60 * 1, // 1 hour
+      },
+    });
     
     if (!response.ok) {
       throw new Error(`Failed to fetch Pokemon list: ${response.status} ${response.statusText}`);
