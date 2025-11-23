@@ -12,9 +12,8 @@ pnpm install
 
 Create a `.env.local` file by copying from `.env.example`:
 
-cp .env.example .env.localOr manually create `.env.local` with:
 
-POKEMON_API=https://pokeapi.co/api/v2/pokemon### 3. Run the development server
+### 3. Run the development server
 
 pnpm devOpen [http://localhost:3000](http://localhost:3000) in your browser.
 
