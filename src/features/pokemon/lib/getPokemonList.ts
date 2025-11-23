@@ -14,7 +14,7 @@ export async function getPokemonList(limit: number = 20, offset: number = 0): Pr
     }
     
     const pokemonList = await response.json();
-    
+    // console.log({pokemonList});
     if (!pokemonList.results || !Array.isArray(pokemonList.results)) {
       throw new Error('Invalid response format from Pokemon API');
     }
@@ -32,6 +32,9 @@ export async function getPokemonList(limit: number = 20, offset: number = 0): Pr
 
     return pokemons;
   } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
     throw new Error('Error fetching Pokemon list');
   }
 }

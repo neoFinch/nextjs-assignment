@@ -26,6 +26,9 @@ export async function getPokemonDetail(slug: string): Promise<PokemonDetail> {
     const pokemonDetails = await response.json();
     return pokemonDetails;
   } catch (error) {
+    if (error instanceof Error) {
+      throw error;
+    }
     throw new Error(`Error fetching Pokemon details for "${slug}"`);
   }
 }

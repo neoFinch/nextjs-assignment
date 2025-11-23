@@ -19,13 +19,13 @@ export default function PokemonError({
       <div className="flex gap-4 mt-4">
         <button
           onClick={reset}
-          className="px-4 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-600 transition-colors"
+          className="px-4 py-2 bg-white/10 text-white/60 rounded-md hover:bg-white/20 transition-colors"
         >
           Try again
         </button>
         <Link
           href="/"
-          className="px-4 py-2 bg-white/10 text-white rounded-md hover:bg-white/20 transition-colors"
+          className="px-4 py-2 bg-white/10 text-white/60 rounded-md hover:bg-white/20 transition-colors"
         >
           Back to home
         </Link>
